@@ -1,0 +1,29 @@
+type: custom:mushroom-chips-card
+chips:
+  - type: template
+    entity: input_datetime.derniere_tonte
+    icon: mdi:mower
+    content: >
+      {% set event = states['input_datetime.derniere_tonte'].state | as_datetime
+      | as_local %} {% set days = (event - today_at()).days | abs %}
+
+      {% if days == 0 %} Aujourd'hui {% elif days == 1 %} Hier {% else %} Il y a
+      {{days}} jours {% endif %}
+    icon_color: >
+      {% set event = states['input_datetime.derniere_tonte'].state | as_datetime
+      | as_local %} {% set days = (event - today_at()).days | abs %}
+
+      {% if days > 14 %} white {% elif days > 7 %} black {% endif %}
+    card_mod:
+      style: |
+        ha-card {
+          {% set event = states['input_datetime.derniere_tonte'].state |
+          as_datetime | as_local %}
+          {% set days = (event - today_at()).days | abs %}
+          
+          {% if days > 14 %} --chip-background : red; --text-color: white; 
+          {% elif days > 7 %} --chip-background : orange; --text-color: black; 
+          {% endif %}
+        }
+    tap_action:
+      action: more-info

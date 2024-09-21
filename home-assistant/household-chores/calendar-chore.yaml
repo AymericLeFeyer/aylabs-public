@@ -1,0 +1,32 @@
+## State model (in helper configuration)
+{% set t = now() %}
+{% set midnight = today_at() %}
+{% set event = state_attr('calendar.poubelles_jaunes', 'start_time') | as_datetime | as_local %}
+{% set delta = event - midnight %}
+{% if delta.days == 0 %}
+  Aujourd'hui
+{% elif delta.days == 1 %}
+  Demain
+{% else %}
+  Dans {{ delta.days }} jours
+{% endif %}
+
+## Dashboard
+type: custom:mushroom-chips-card
+alignment: center
+chips:
+  - type: template
+    icon: mdi:trash-can
+    icon_color: >
+      {% if states.sensor.poubelles_noires.state == 'Aujourd\'hui' %} white {%
+      endif %}
+    content: "{{ states.sensor.poubelles_noires.state }}"
+    entity: calendar.poubelles_noires
+    card_mod:
+      style: |
+        ha-card {
+          {% set state = states.sensor.poubelles_noires.state %}
+          {% if state == 'Aujourd\'hui' %} --chip-background : red; --text-color: white; 
+          {% endif %}
+        }
+    tap_action: null

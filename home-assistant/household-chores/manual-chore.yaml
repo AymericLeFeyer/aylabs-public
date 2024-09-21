@@ -1,0 +1,21 @@
+type: custom:mushroom-chips-card
+alignment: center
+chips:
+  - type: template
+    icon: mdi:grass
+    icon_color: >
+      {% if states.input_boolean.dechets_verts.state == 'on' %} white {% endif
+      %}
+    content: |
+      {% set state = states.input_boolean.dechets_verts.state %}
+      {% if state == 'on' %} À vider
+      {% else %} Herbe
+      {% endif %}
+    entity: input_boolean.dechets_verts
+    card_mod:
+      style: |
+        ha-card {
+          {% set state = states.input_boolean.dechets_verts.state %}
+          {% if state == 'on' %} --chip-background : green; --text-color: white; 
+          {% endif %}
+        }
