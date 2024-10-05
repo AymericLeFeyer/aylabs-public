@@ -1,0 +1,41 @@
+type: custom:mushroom-template-card
+primary: Cuisine
+secondary: |+
+  {{states['sensor.thermometer_kitchen_room_temperature'].state }} °C 
+  {{states['sensor.heating_kitchen_room_power'].state }} W 
+
+icon: >
+  {% set state = states['select.heating_kitchen_room_pilot_wire_mode'].state %}
+  {% if (state == "comfort" or state == "comfort_-1" or state == "comfort_-2") %}
+  mdi:fire
+  {% elif state == "eco" %}
+  mdi:moon-waning-crescent
+  {% elif state == "frost_protection" %}
+  mdi:snowflake
+  {% else %}
+  mdi:heating-coil
+  {% endif%}
+entity: select.heating_kitchen_room_pilot_wire_mode
+multiline_secondary: true
+layout: vertical
+icon_color: |
+  {% set state = states['select.heating_kitchen_room_pilot_wire_mode'].state %}
+  {% if state == "comfort" %}
+  #fc0303
+  {% elif state == "comfort_-1" %}
+  #ff8585
+  {% elif state == "comfort_-2" %}
+  #ffd4d4
+  {% elif state == "eco" %}
+  indigo
+  {% elif state == "frost_protection" %}
+  blue
+  {% endif%}
+tap_action:
+  action: more-info
+badge_icon: >-
+  {% if states['binary_sensor.open_sensor_kitchen_bay_window_contact'].state == 'on' %} 
+  mdi:window-open
+  {% endif %}
+fill_container: true
+badge_color: red
