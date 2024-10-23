@@ -1,0 +1,40 @@
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/settings
+
+title: Aymeric's Homelab
+cardBlur: md
+headerStyle: clean
+language: en
+background:
+  image: https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg?cs=srgb&dl=pexels-philippedonn-1169754.jpg&fm=jpg
+  blur: md
+
+theme: dark
+color: slate
+hideVersion: true
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey
+
+quicklaunch:
+  searchDescriptions: true
+  hideInternetSearch: true
+  hideVisitURL: true
+
+showStats: true
+statusStyle: "dot"
+
+layout:
+  Core:
+    style: row
+    columns: 3
+    header: false
+
+  Home Automation:
+    style: row
+    columns: 3
+
+  Medias:
+    style: row
+    columns: 3

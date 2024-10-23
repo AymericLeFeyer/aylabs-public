@@ -1,0 +1,18 @@
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/service-widgets
+
+- openmeteo:
+    label: Maison
+    latitude: 48.866667
+    longitude: 2.333333
+    timezone: Europe/Paris # optional
+    units: metric # or imperial
+    cache: 5 # Time in minutes to cache API responses, to stay within limits
+    format: # optional, Intl.NumberFormat options
+      maximumFractionDigits: 1
+
+- datetime:
+    locale: fr
+    text_size: xl
+    format:
+      timeStyle: long

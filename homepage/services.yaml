@@ -1,0 +1,112 @@
+- Core:
+    - Proxmox:
+        icon: proxmox.png
+        href: https://192.168.1.80:8006/
+        description: VM & LXC Manager for the Homelab
+        widget:
+          type: proxmox
+          url: https://192.168.1.80:8006
+          username: ***
+          password: ***
+    - Pi-Hole:
+        icon: pi-hole.png
+        href: http://192.168.1.161/admin/index.php
+        description: Network-wide ads blocker & queries manager
+        widget:
+          type: pihole
+          url: http://192.168.1.161
+          key: ***
+    - Portainer:
+        icon: portainer.png
+        href: https://192.168.1.35:9443/#!/2/docker/dashboard
+        description: Docker images manager
+        widget:
+          type: portainer
+          url: https://192.168.1.35:9443
+          env: 2
+          key: ***
+    - OpenVPN:
+        icon: openvpn.png
+        description: VPN for home redirecting
+
+- Home Automation:
+    - Home Assistant:
+        icon: home-assistant.png
+        href: http://192.168.1.122:8123/
+        description: Hub for home automations
+        showStatus: "dot"
+        widget:
+          type: homeassistant
+          url: http://192.168.1.122:8123
+          key: ***
+          custom:
+            - state: sensor.nb_lights_on
+              label: Lights
+            - state: sensor.nb_windows_open
+              label: Windows
+            - state: sensor.average_temperature
+              label: Temperature
+            - state: sensor.average_humidity
+              label: Humidity
+
+    - Mealie:
+        icon: mealie.png
+        href: http://192.168.1.35:9925
+        description: Meal planner
+        widget:
+          type: mealie
+          url: http://192.168.1.35:9925
+          key: ***
+
+- Medias:
+    - YouTube:
+        icon: youtube.png
+        href: https://www.youtube.com/@ay_labs
+        description: My YouTube Channel
+        showStatus: "dot"
+        widget:
+          type: homeassistant
+          url: http://192.168.1.122:8123
+          key: ***
+          custom:
+            - state: sensor.aymeric_abonnes
+              label: Subscribers
+            - state: sensor.aymeric_derniere_mise_en_ligne
+              label: Last video
+    - TrueNAS Scale:
+        icon: truenas.png
+        href: http://192.168.1.2/ui/sessions/signin
+        description: NAS for medias & files
+        widget:
+          type: truenas
+          url: http://192.168.1.2
+          key: ***
+          enablePools: true # optional, defaults to false
+          nasType: scale # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
+
+    - NextCloud:
+        icon: nextcloud.png
+        href: https://192.168.1.45/index.php/apps/dashboard/
+        description: Drive, photos hosted at home
+        widget:
+          type: nextcloud
+          url: https://192.168.1.45
+          key: ***
+    - Plex Media Server:
+        icon: plex.png
+        href: http://192.168.1.91:32400/web/index.html#!
+        description: Watch movies and TV shows
+        widget:
+          type: plex
+          url: http:/192.168.1.91:32400
+          key: ***
+
+    - qBittorrent:
+        icon: qbittorrent.png
+        href: http://192.168.1.26:8090
+        description: Torrent client
+        widget:
+          type: qbittorrent
+          url: http://192.168.1.26:8090
+          username: ***
+          password: ***
